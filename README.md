@@ -1,5 +1,7 @@
 # down
-使用多线程下载网络文件
+* 使用多线程下载网络文件;
+* 使用RandomAccessFile在指定文件位置开始写入;
+* 使用connection.setRequestProperty("Range", "bytes=" + from + "-" + to)将网络文件分块读取;
 # Getting Started
 
 ### 依赖MAVEN Lombok
