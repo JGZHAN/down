@@ -18,4 +18,5 @@
 
 
 * 然后使用命令'down 需要下载的文件地址'下载文件，这里以下载微信安装包为例，可以不指定第二个参数（下载后的文件路径），默认放在当前使用命令的文件夹；
-<img width="728" alt="image" src="https://user-images.githubusercontent.com/62022681/222921538-dd97a1ab-6e2e-4e59-9ea8-b3ddd64937ec.png">
+<img width="705" alt="image" src="https://user-images.githubusercontent.com/62022681/222921813-1e096f32-8589-41a0-a198-43332da1f714.png">
+
