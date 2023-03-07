@@ -7,33 +7,6 @@ import cn.jgzhan.constants.FileConstant;
 
 public class FileUtil {
 
-  public static String getName(String fileName) {
-    if (fileName == null) {
-      return null;
-    } else {
-      checkFileName(fileName);
-      int index = indexOfLastSeparator(fileName);
-      return fileName.substring(index + 1);
-    }
-  }
-
-  private static void checkFileName(String fileName) {
-    var trim = fileName.trim();
-    if (trim == "") {
-      throw new RuntimeException("路径不可为空");
-    }
-  }
-
-  public static int indexOfLastSeparator(String fileName) {
-    if (fileName == null) {
-      return -1;
-    } else {
-      int lastUnixPos = fileName.lastIndexOf(47);
-      int lastWindowsPos = fileName.lastIndexOf(92);
-      return Math.max(lastUnixPos, lastWindowsPos);
-    }
-  }
-
 
 
   /**

@@ -7,9 +7,10 @@ public class Main {
   private final static FileDownService fileDownService = new FileDownService();
 
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws Exception {
 
-    var downFileBO = toFileDownBO(args);
+//    var downFileBO = toFileDownBO(args);
+    var downFileBO = toFileDownBO(new String[]{"https://dldir1.qq.com/weixin/mac/WeChatMac.dmg"});
 //    var testUrl = "https://dldir1.qq.com/weixin/mac/WeChatMac.dmg";
     var allSuccess = fileDownService.downLoadFile(downFileBO);
     if (!allSuccess) {
