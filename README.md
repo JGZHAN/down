@@ -5,7 +5,7 @@
 * 使用connection.setRequestProperty("Range", "bytes=" + from + "-" + to)将网络文件分块读取;
 # Getting Started
 
-### 依赖MAVEN Lombok
+### 依赖MAVEN Lombok、fastjson2
 
 打包成为jar包，
 进入到jar包的目录下，直接使用java -jar命令:
