@@ -90,8 +90,13 @@ public class FileDownService {
     return downFileBO;
   }
 
-  private void checkFile(File target, File tempFile)
-      throws StoppedException, FileNotFoundException {
+  /**
+   * 检查文件是否已经下载
+   * @param target
+   * @param tempFile
+   * @throws StoppedException
+   */
+  private void checkFile(File target, File tempFile) throws StoppedException {
     if (target.exists()) {
       if (!tempFile.exists()) {
         System.out.println(target.getAbsoluteFile().getPath() + "文件已经存在，是否覆盖 ？ y/n ");
@@ -148,8 +153,8 @@ public class FileDownService {
    * @param tempRandomAccessFile
    * @return 是否全部片段下载成功
    */
-  private boolean waitDownAndGetResult(List<Future<Boolean>> future,
-      DownFileBO downFileBO, RandomAccessFile tempRandomAccessFile) throws IOException {
+  private boolean waitDownAndGetResult(List<Future<Boolean>> future, DownFileBO downFileBO,
+      RandomAccessFile tempRandomAccessFile) throws IOException, InterruptedException {
     while (true) {
       var finish = future.stream().allMatch(Future::isDone);
       if (finish) {
@@ -157,6 +162,7 @@ public class FileDownService {
       }
       saveTempFile(tempRandomAccessFile, downFileBO);
       printLog();
+      Thread.sleep(500 * 1);
     }
     return future.stream().allMatch(futureItem -> {
       try {
@@ -180,15 +186,10 @@ public class FileDownService {
   /**
    * 打印进度
    */
-  private static void printLog() {
-    try {
-      var processVla = progressSize.get() * 100 / total;
-      var progressBar = getProgressBar(processVla);
-      System.out.print("\r" + "下载进度 ：" + String.format("%.2f", processVla) + "%" + progressBar);
-      Thread.sleep(500 * 1);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+  private void printLog() {
+    var processVla = progressSize.get() * 100 / total;
+    var progressBar = getProgressBar(processVla);
+    System.out.print("\r" + "下载进度 ：" + String.format("%.2f", processVla) + "%" + progressBar);
   }
 
 
